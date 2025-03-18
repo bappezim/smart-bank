@@ -1,40 +1,20 @@
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View, Image, TextInput } from 'react-native';
+import { useState } from 'react';
+import { StyleSheet, Text, View,  TextInput , Button, } from 'react-native';
 
 export default function App() {
-  return (
-    <View style={styles.container}>
-    <Image source={require('./logo.png')} />
-    <TextInput
-          style={styles.input}
-          onChangeText={onChangeText}
-          value={text}
-        />-
-
-        <TextInput
-          style={styles.input}
-          onChangeText={onChangeNumber}
-          value={number}
-          placeholder="useless placeholder"
-          keyboardType="numeric"
-        />
-
-      <Text>ola novo aqui </Text>
-      <StatusBar style="auto" />
-    </View>
-  );
+ const [peso, setpeso] =useState('');
+ //falta pegar a altura
+ const [imc, setImc] = useState(null);
+ const [classificado, setclassificado] = useState(' ');
+ 
+ function calcucularIMC(){
+  const pesonum =parsefloat(peso);
+  const alturaNum = parsefloat(altura) / 100;
+  if (!pesonum || !alturaNum ){
+    alert('por favor, insira valores validos!');
+    return;
+  }
+ }
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-  input: {
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
